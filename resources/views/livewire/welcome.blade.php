@@ -23,7 +23,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="submit" class="btn btn-primary">{{ $isNew ? "Save" : "Update"}}</button>
                         </div>
                     </form>
                 </div>
@@ -50,8 +50,10 @@
                                         </div>
                                         <div class="col-2">
                                             <div class="d-flex">
-                                                <a href="#!" class="btn btn-secondary btn-sm">Edit</a>
-                                                <a href="#!" class="btn btn-danger btn-sm">Delete</a>
+                                                <a href="#!" wire:click="editPost({{ $p }})" class="btn btn-secondary btn-sm">Edit</a>
+                                                <a href="#!" class="btn btn-danger btn-sm" 
+                                                wire:click="deletePost({{ $p->id }})"
+                                                wire:confirm="Are you sure ? want to delete this post.">Delete</a>
                                             </div>
                                         </div>
                                     </div>
