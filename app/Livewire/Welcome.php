@@ -8,31 +8,28 @@ use Livewire\WithPagination;
 
 class Welcome extends Component
 {
-     use WithPagination;
-      protected $paginationTheme = 'bootstrap';
+    use WithPagination;
+    protected $paginationTheme="bootstrap";
     public $title="", $content="";
 
     public function savePost(){
         $this->validate([
-            "title"=>"required|min:5",
-            "content"=>"required|min:5"
+            "title"=>'required',
+            "content"=>"required"
         ]);
 
-        $post=new Post();
-        $post->title=$this->title;
-        $post->content=$this->content;
-        $post->save();
+        $p=new Post();
+        $p->title=$this->title;
+        $p->content=$this->content;
+        $p->save();
 
-        $this->title="";
-        $this->content="";
-
-        session()->flash("success_msg", "The new post  has been created");
-
+        $this->reset("title", "content");
+        session()->flash("success_msg", "The new post has been created.");
     }
 
     public function render()
     {
         $posts=Post::OrderBy("id", "desc")->paginate(2);
-        return view('livewire.welcome')->with(["posts"=>$posts]);
+        return view('livewire.welcome')->with(['posts'=>$posts]);
     }
 }

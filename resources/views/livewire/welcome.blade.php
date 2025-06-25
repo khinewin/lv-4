@@ -49,7 +49,7 @@
                                             <div class="fw-bold">{{ $p->content }}</div>
                                         </div>
                                         <div class="col-2">
-                                            <div class="flex">
+                                            <div class="d-flex">
                                                 <a href="#!" class="btn btn-secondary btn-sm">Edit</a>
                                                 <a href="#!" class="btn btn-danger btn-sm">Delete</a>
                                             </div>
